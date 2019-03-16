@@ -1,0 +1,32 @@
+{
+	"name": "Oodi Calendar Maker",
+	"version": "1.0",
+	"description": "It is a solution. Not the best one by any means, but it's still a solution.",
+    "permissions": ["storage", "declarativeContent", "activeTab", "tabs"],
+    "background": {
+      "scripts": ["config.js", "lib/jquery.min.js","background.js"],
+      "persistent": false
+    },
+    "page_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "img/ico16.png",
+        "32": "img/ico32.png",
+        "48": "img/ico48.png",
+        "128": "img/ico128.png"
+      }
+    },
+    "icons": {
+      "16": "img/ico16.png",
+      "32": "img/ico32.png",
+      "48": "img/ico48.png",
+      "128": "img/ico128.png"
+    },
+    "manifest_version": 2,
+	"content_scripts": [
+		{
+		  "matches": ["<all_urls>"],
+		  "js": ["config.js", "lib/jquery.min.js", "contentScript.js"]
+		}
+    ]
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			button {
+				padding: 5px;
+				outline: none;
+			}
+			body {
+				margin: 0px;
+				padding: 5px;
+				font-family: "Courier New";
+		    font-size: 0.8rem;
+				width: 300px;
+			}
+			textarea {
+				min-width: 98%;
+			}
+			.warn {
+				display: none;
+		    padding: 2px;
+		    color: #da4646;
+		    background: #fbf1f1;
+			}
+			h3 {
+				margin: 5px 0px;
+			}
+			section {
+				margin-top: 5px;
+			}
+			footer {
+				font-size: 0.7rem;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>Status: <span id="status">READY</span></h3>
+		<ol>
+			<li id ="oodi">Log in to WebOodi and go to "My studies > Registrations"</li>
+			<li>Press the "Start Export" button</li>
+			<li>Do not switch tabs until the export is done!</li>
+			<li>You will now get a calendar.ics file (ICAL format), that you can import into most modern calendars</li>
+		</ol>
+		<div class="warn" id="warning"><b>Please do not disturb me by switching tabs! Keep this tab open!</b></div>
+		<button id="startQueue">Start Export</button><br>
+		<section>
+			<a target="_blank" href="https://support.google.com/calendar/answer/37118?hl=fi#import_to_gcal">How to import into Google Calendar</a><br>
+			<a target="_blank" href="https://support.apple.com/fi-fi/guide/calendar/icl1023/mac">How to import into Apple iCalendar</a><br>
+			<a id="iphone" href="#">How to import into iPhone/iPad</a><br>
+		</section>
+		<footer>
+			<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+		</footer>
+		<script src="lib/jquery.min.js"></script>
+		<script src="lib/ics.deps.min.js"></script>
+		<script src="popup.js"></script>
+	</body>
+</html>
