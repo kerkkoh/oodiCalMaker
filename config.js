@@ -1,11 +1,38 @@
-/*
-*	Initialize some configuration
-*
-*	You should change the oodi url here to suit your own organization's WebOodi installation.
-*/
+// Add your own oodi url here if not supported already
+const OODIURLS = [
+    'weboodi.helsinki.fi',
+    'weboodi.oulu.fi',
+    'weboodi.uef.fi',
+    'weboodi.ulapland.fi',
+    'weboodi.uwasa.fi',
+    'weboodi.lut.fi',
+    'oodi.aalto.fi',
+    'weboodi.uniarts.fi',
+];
 
-// Edit this string to be your oodi url in format "oodi.organization.fi"
-// Do _NOT_ include "https://" or a slash (/) after the url, this is rather a hostname than an url!
-const url = "oodi.organization.fi";
+const DEBUG = false;
 
-chrome.storage.local.set({oodiUrl: url}, function() {});
+// Random utils
+const getStorage = async what =>
+    new Promise(resolve =>
+        chrome.storage.local.get([what], result => resolve(result[what]))
+    );
+const setStorage = async what =>
+    new Promise(resolve => chrome.storage.local.set(what, () => resolve()));
+
+const getRegistrationUrl = origin => `${origin}/a/omatopinn.jsp?NaytIlm=1`;
+
+const getHostName = url =>
+    url
+        .split('/')
+        [url.indexOf('//') !== -1 ? 2 : 0].split(':')[0]
+        .split('?')[0];
+
+const getRegistrationFromUrl = url =>
+    `https://${getRegistrationUrl(getHostName(url))}`;
+
+const nonEmpty = a => a != undefined;
+const tail = ([, ...rest]) => rest;
+const log = (...what) => {
+    if (DEBUG) console.log(...what);
+};
